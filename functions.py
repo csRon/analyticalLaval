@@ -3,6 +3,7 @@ import variables
 import numpy as np
 from scipy import optimize
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def area_mach_relation(M):
     '''
@@ -147,6 +148,10 @@ def find_shock(mach):
         if diff > 0.2:
             return variables.x[i]
 
+def save_as_csv(mach, p):
+    dataset = pd.DataFrame({'x':variables.x, 'mach':mach, 'p':p}, columns=['x', 'mach', 'p'])
+    dataset.to_csv('results/mach_and_p_over_x.csv', index=False)
+
 def plot_nozzle_area():
     # plot the area function to see what if it is correct
     plt.figure()
@@ -156,18 +161,6 @@ def plot_nozzle_area():
     plt.xlabel('x-position')
     plt.ylabel('nozzle Area')
     plt.savefig("results/nozzle_area_function.png", dpi=200)
-
-
-def plot_mach_number_without_shock():
-    # plot the mach number
-    plt.figure()
-    plt.plot(variables.x, variables.mach_under, label='subsonic')
-    plt.plot(variables.x, variables.mach_over, label='supersonic')
-    plt.xlabel('x-Position')
-    plt.ylabel('mach number')
-    plt.grid()
-    plt.legend()
-    plt.savefig("results/mach_number_without_shock.png", dpi=200)
 
 def plot_mach_number_with_shock(mach):
     # plot the mach number

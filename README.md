@@ -1,11 +1,12 @@
 # analyticalLaval
 
-*analyticalLaval* solves for the mach number and the pressure distribution inside a given laval nozzle / convergent divergent nozzle.
+*analyticalLaval* solves for the mach number and the pressure distribution inside a given laval nozzle / convergent divergent (CD) nozzle.
 It takes the pressures at input and output, as well as a nozzle function as input, calculated mach number and pressure distributions and the shock location (if there is a shock)
 
 ## Requirements
 - python3.6 or newer
 - see requirements.txt for others
+- basic understanding of nozzle physics
 
 
 ## Install
@@ -18,6 +19,19 @@ Test you installation by running
 ```
 python main.py
 ```
+
+## Getting started
+The input of the program is defined in ``variables.py``. The physics is defined by:
+- nozzle area function ``area_function`` (should describe a A(x) of a CD nozzle)
+  - x-range of the area ``x`` (only the area you want to calculate)
+- input pressure ``pi``
+- output pressure ``po`` (note that pi>po)
+- heat capacity ratio ``k`` (usually 1.4 for air)
+
+You can play around a little bit with these inputs. The results will be in ``results`` folder and should be pretty self-explaining by their names.
+
+
+
 
 
 ## Background

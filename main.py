@@ -24,7 +24,6 @@ def main():
 	for i, variables.A in enumerate(variables.vA(variables.x)):
 		variables.mach_under[i] = optimize.newton(functions.area_mach_relation, 0)
 		variables.mach_over[i] = optimize.newton(functions.area_mach_relation, 2)
-	functions.plot_mach_number_without_shock()
 
 	# calculate upper and lower bounds of pressure ratio to reach 
 	# transsonic speed
@@ -38,6 +37,7 @@ def main():
 	else:
 		print("Start guessing loops to find shock location..")
 		mach, p = functions.guessing_method(pi, po, 0.0001, 0.01)
+		functions.save_as_csv(mach, p)
 		functions.plot_mach_number_with_shock(mach)
 		functions.plot_pressure_with_shock(p)
 		print("Finished guessing loops to find shock location..")
