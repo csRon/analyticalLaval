@@ -3,9 +3,12 @@ import variables
 import functions
 
 from scipy import optimize
+import os
 
 def main():
 	variables.init()
+
+	os.makedirs('results', exist_ok=True)
 
 	functions.plot_nozzle_area()
 	print("Input pressure:\t\t%f"%variables.pi)

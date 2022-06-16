@@ -12,7 +12,6 @@ It takes the pressures at input and output, as well as a nozzle function as inpu
 ```
 git clone https://github.com/csRon/analyticalLaval.git
 cd analyticalLaval
-mkdir results
 pip install -r requirements.txt
 ```
 Test you installation by running
